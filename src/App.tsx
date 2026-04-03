@@ -32,10 +32,11 @@ export default function App() {
       <header className="fixed top-0 z-50 w-full">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 lg:px-8 bg-[#060e1f]/70 backdrop-blur-xl border-b border-white/5">
           <a href="#home" className="flex items-center gap-3 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-400 shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow">
-              <Lightbulb className="h-5 w-5 text-white" />
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 via-cyan-400 to-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)] group-hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all duration-500 overflow-hidden relative">
+              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Lightbulb className="h-6 w-6 text-white relative z-10" />
             </div>
-            <span className="text-lg font-bold tracking-tight hidden sm:block">AI Competition</span>
+            <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent hidden sm:block">AI Competition</span>
           </a>
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map(item => (
@@ -45,16 +46,16 @@ export default function App() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-3">
-            <button onClick={toggleLang} className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm font-medium text-slate-300 hover:bg-white/10 hover:text-white transition-all">
-              <Globe className="h-3.5 w-3.5 text-emerald-400" />
+          <div className="flex items-center gap-4">
+            <button onClick={toggleLang} className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300">
+              <Globe className="h-4 w-4 text-emerald-400" />
               {lang === 'EN' ? '中文' : 'EN'}
             </button>
-            <a href="#apply" className="hidden md:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-5 py-2 text-sm font-semibold text-white hover:shadow-lg hover:shadow-emerald-500/25 transition-all animate-gradient">
-              {t.nav.apply} <ArrowRight className="h-3.5 w-3.5" />
+            <a href="#apply" className="hidden md:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-6 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 animate-gradient">
+              {t.nav.apply} <ArrowRight className="h-4 w-4" />
             </a>
-            <button onClick={() => setMobileMenu(!mobileMenu)} className="lg:hidden p-2 text-slate-400 hover:text-white">
-              <ChevronDown className={`h-5 w-5 transition-transform ${mobileMenu ? 'rotate-180' : ''}`} />
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="lg:hidden p-2 text-slate-400 hover:text-white transition-colors">
+              <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${mobileMenu ? 'rotate-180' : ''}`} />
             </button>
           </div>
         </div>
@@ -84,17 +85,21 @@ export default function App() {
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 {t.hero.badge}
               </div>
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05]">
-                {t.hero.title}<br />
-                <span className="block bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-300 bg-clip-text text-transparent animate-gradient">
+              <h1 className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tight leading-[0.95] text-balance">
+                <span className="opacity-90">{t.hero.title}</span><br />
+                <span className="text-gradient animate-gradient">
                   {t.hero.titleHighlight}
                 </span>
               </h1>
-              <div className="flex items-center gap-2 mt-6 text-sm text-slate-400">
-                <MapPin className="h-4 w-4 text-emerald-500" />
-                {t.hero.location}
+              <div className="flex items-center gap-3 mt-8">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                  <MapPin className="h-4 w-4 text-emerald-400" />
+                </div>
+                <span className="text-base font-medium text-slate-400 tracking-wide lowercase">{t.hero.location}</span>
               </div>
-              <p className="mt-6 text-lg sm:text-xl leading-relaxed text-slate-300 max-w-2xl">{t.hero.desc}</p>
+              <p className="mt-8 text-xl sm:text-2xl leading-relaxed text-slate-300/80 max-w-2xl text-balance">
+                {t.hero.desc}
+              </p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a href="#apply" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all animate-gradient">
                   {t.hero.cta1} <ArrowRight className="h-4 w-4" />
@@ -112,22 +117,22 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#060e1f] via-[#0a1628] to-[#060e1f]" />
           <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
             <motion.h2 {...fadeUp} className="text-3xl sm:text-4xl font-bold text-center mb-16">{t.highlights.title}</motion.h2>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               {t.highlights.items.map((item, i) => {
                 const Icon = highlightIcons[i];
                 return (
-                  <motion.div key={i} {...stagger(i)} className="glass rounded-2xl p-8 hover:bg-white/8 transition-all group">
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
-                        <Icon className="h-6 w-6" />
+                  <motion.div key={i} {...stagger(i)} className="glass card-glow rounded-3xl p-10 group">
+                    <div className="flex items-start justify-between mb-8">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 border border-white/5 text-emerald-400 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                        <Icon className="h-7 w-7" />
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-black text-emerald-400">{item.stat}</div>
-                        <div className="text-xs text-slate-500">{item.statLabel}</div>
+                        <div className="text-3xl font-black text-gradient">{item.stat}</div>
+                        <div className="text-xs font-bold text-slate-500 uppercase tracking-tighter">{item.statLabel}</div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                    <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">{item.title}</h3>
+                    <p className="text-slate-400 text-base leading-relaxed">{item.desc}</p>
                   </motion.div>
                 );
               })}
@@ -168,14 +173,14 @@ export default function App() {
               <h2 className="text-3xl sm:text-5xl font-bold">{t.nanjing.title}</h2>
               <p className="mt-4 text-lg text-slate-400">{t.nanjing.subtitle}</p>
             </motion.div>
-            <div className="grid md:grid-cols-3 gap-6 mb-20">
+            <div className="grid md:grid-cols-3 gap-8 mb-20">
               {t.nanjing.cards.map((card, i) => (
-                <motion.div key={i} {...stagger(i)} className="glass rounded-2xl p-8 hover:bg-white/8 transition-all group relative overflow-hidden">
-                  <div className="absolute -top-10 -right-10 text-[120px] font-black text-white/[0.02] leading-none">{String(i + 1).padStart(2, '0')}</div>
-                  <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-1 animate-count-pulse">{card.stat}</div>
-                  <div className="text-xs text-emerald-400/60 mb-6">{card.statLabel}</div>
-                  <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{card.desc}</p>
+                <motion.div key={i} {...stagger(i)} className="glass card-glow rounded-3xl p-10 group relative overflow-hidden">
+                  <div className="absolute -top-12 -right-12 text-[160px] font-black text-white/[0.03] leading-none select-none group-hover:text-white/[0.05] transition-all duration-700">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="text-4xl font-black text-gradient mb-2 group-hover:scale-105 transition-transform duration-500 origin-left">{card.stat}</div>
+                  <div className="text-xs font-bold text-emerald-400/60 mb-8 uppercase tracking-widest">{card.statLabel}</div>
+                  <h3 className="text-2xl font-bold mb-4 group-hover:translate-x-1 transition-transform">{card.title}</h3>
+                  <p className="text-slate-400 text-base leading-relaxed">{card.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -241,16 +246,16 @@ export default function App() {
             </motion.div>
 
             {/* Tracks */}
-            <div className="grid md:grid-cols-3 gap-6 mb-20">
+            <div className="grid md:grid-cols-3 gap-8 mb-20">
               {t.tracks.items.map((track, i) => {
                 const Icon = trackIcons[i];
                 return (
-                  <motion.div key={i} {...stagger(i)} className="glass rounded-2xl p-8 hover:bg-white/8 transition-all group text-center">
-                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 text-emerald-400 mb-6 group-hover:from-emerald-500/30 group-hover:to-cyan-500/30 transition-all">
-                      <Icon className="h-8 w-8" />
+                  <motion.div key={i} {...stagger(i)} className="glass card-glow rounded-3xl p-10 group text-center relative">
+                    <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 text-emerald-400 mb-8 border border-white/5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 ring-4 ring-emerald-500/0 group-hover:ring-emerald-500/10">
+                      <Icon className="h-10 w-10" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3">{track.title}</h3>
-                    <p className="text-slate-400 text-sm">{track.desc}</p>
+                    <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">{track.title}</h3>
+                    <p className="text-slate-400 text-base leading-relaxed">{track.desc}</p>
                   </motion.div>
                 );
               })}
@@ -273,18 +278,20 @@ export default function App() {
             </motion.div>
 
             {/* Timeline */}
-            <motion.div {...fadeUp} className="mb-20">
-              <h3 className="text-2xl font-bold mb-12 text-center">{t.timeline.title}</h3>
+            <motion.div {...fadeUp} className="mb-24">
+              <h3 className="text-3xl font-bold mb-16 text-center">{t.timeline.title}</h3>
               <div className="relative">
-                <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent -translate-y-1/2" />
-                <div className="grid md:grid-cols-5 gap-6">
+                <div className="hidden md:block absolute top-[60px] left-8 right-8 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+                <div className="grid md:grid-cols-5 gap-4">
                   {t.timeline.stages.map((stage, i) => (
-                    <motion.div key={i} {...stagger(i)} className="glass rounded-xl p-6 text-center relative hover:bg-white/8 transition-all group">
-                      <div className="hidden md:block absolute -top-3 left-1/2 -translate-x-1/2 h-6 w-6 rounded-full bg-emerald-500 border-4 border-[#0a1628] z-10" />
-                      <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-2">{stage.count}</div>
-                      <div className="text-xs text-emerald-400 font-medium mb-2">{stage.date}</div>
-                      <h4 className="font-bold text-sm mb-1">{stage.title}</h4>
-                      <p className="text-slate-500 text-xs">{stage.desc}</p>
+                    <motion.div key={i} {...stagger(i)} className="glass card-glow rounded-2xl p-6 text-center relative group isolate">
+                      <div className="mx-auto h-12 w-12 rounded-full bg-[#06142a] border-2 border-emerald-500/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-emerald-400 transition-all duration-300 relative z-10">
+                        <div className="h-3 w-3 rounded-full bg-emerald-500 animate-pulse" />
+                      </div>
+                      <div className="text-4xl font-black text-gradient opacity-20 group-hover:opacity-100 transition-opacity duration-500 mb-2">{stage.count}</div>
+                      <div className="text-xs font-bold text-emerald-400 mb-3 tracking-widest">{stage.date}</div>
+                      <h4 className="font-extrabold text-sm mb-2 group-hover:text-emerald-300 transition-colors">{stage.title}</h4>
+                      <p className="text-slate-500 text-xs leading-relaxed line-clamp-2">{stage.desc}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -292,41 +299,53 @@ export default function App() {
             </motion.div>
 
             {/* Prizes */}
-            <motion.div {...fadeUp}>
-              <h3 className="text-2xl font-bold mb-4 text-center">{t.prizes.title}</h3>
-              <p className="text-center text-emerald-400 font-semibold mb-10">{t.prizes.total}</p>
-              <div className="grid md:grid-cols-3 gap-6 mb-6">
+            <motion.div {...fadeUp} className="mb-24">
+              <h3 className="text-3xl font-bold mb-4 text-center">{t.prizes.title}</h3>
+              <p className="text-center text-xl text-emerald-400 font-bold mb-12">{t.prizes.total}</p>
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
                 {t.prizes.items.map((prize, i) => (
-                  <motion.div key={i} {...stagger(i)} className={`rounded-2xl p-8 text-center transition-all ${i === 0 ? 'bg-gradient-to-b from-yellow-500/10 to-yellow-500/5 border border-yellow-500/20' : 'glass'} hover:scale-[1.02]`}>
-                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full mb-4 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20">
-                      {i === 0 ? <Trophy className="h-7 w-7 text-yellow-400" /> : <Award className="h-7 w-7 text-emerald-400" />}
+                  <motion.div key={i} {...stagger(i)} className={`relative overflow-hidden rounded-3xl p-10 text-center transition-all duration-500 ${i === 0 ? 'bg-gradient-to-b from-yellow-500/15 via-[#0a1628] to-[#060e1f] border border-yellow-500/30 shadow-[0_0_50px_rgba(234,179,8,0.1)] scale-105 z-10' : 'glass card-glow'}`}>
+                    {i === 0 && <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(234,179,8,0.1),transparent_70%)] animate-pulse" />}
+                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl mb-6 bg-gradient-to-br from-white/5 to-white/10 border border-white/5 group-hover:rotate-6 transition-transform">
+                      {i === 0 ? <Trophy className="h-8 w-8 text-yellow-400" /> : <Award className="h-8 w-8 text-emerald-400" />}
                     </div>
-                    <div className="text-xs text-slate-400 uppercase tracking-widest mb-1">{prize.place}</div>
-                    <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-1">{prize.amount}</div>
-                    <div className="text-sm text-slate-400">{prize.each} · {prize.winners}</div>
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">{prize.place}</div>
+                    <div className={`text-4xl font-black mb-3 ${i === 0 ? 'text-yellow-400' : 'text-gradient'}`}>{prize.amount}</div>
+                    <div className="text-base font-medium text-slate-400">{prize.each} · {prize.winners}</div>
                   </motion.div>
                 ))}
               </div>
-              <p className="text-center text-sm text-emerald-400/60">{t.prizes.note}</p>
+              <p className="text-center text-sm font-medium text-emerald-400/50 flex items-center justify-center gap-2">
+                <Zap className="h-3.5 w-3.5" /> {t.prizes.note}
+              </p>
             </motion.div>
           </div>
         </section>
 
         {/* ═══ APPLY NOW ═══ */}
-        <section id="apply" className="py-24 relative overflow-hidden">
+        <section id="apply" className="py-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#060e1f] via-emerald-950/20 to-[#060e1f]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-emerald-500/5 blur-[150px]" />
-          <div className="relative mx-auto max-w-3xl px-6 lg:px-8 text-center">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <Rocket className="h-16 w-16 text-emerald-400 mx-auto mb-8 animate-float" />
-              <h2 className="text-3xl sm:text-5xl font-black mb-4">{t.apply.title}</h2>
-              <p className="text-xl text-slate-400 mb-10">{t.apply.desc}</p>
-              <a href="mailto:contact@transfong.com" className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-10 py-4 text-lg font-bold text-white shadow-2xl shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all animate-gradient">
-                {t.apply.cta} <ArrowRight className="h-5 w-5" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[800px] w-[800px] rounded-full bg-emerald-500/5 blur-[180px] animate-pulse-glow" />
+          <div className="relative mx-auto max-w-4xl px-6 lg:px-8 text-center bg-white/[0.01] backdrop-blur-[2px] rounded-[3rem] py-20 border border-white/5">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <div className="relative inline-block mb-10">
+                <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full animate-pulse" />
+                <Rocket className="h-20 w-20 text-emerald-400 relative z-10 animate-float" />
+              </div>
+              <h2 className="text-5xl sm:text-7xl font-black mb-6 tracking-tight">{t.apply.title}</h2>
+              <p className="text-xl sm:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+                {t.apply.desc}
+              </p>
+              <a href="mailto:contact@transfong.com" className="group relative inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-12 py-5 text-xl font-black text-white shadow-[0_0_50px_rgba(16,185,129,0.3)] hover:shadow-[0_0_80px_rgba(16,185,129,0.5)] hover:scale-105 active:scale-95 transition-all duration-500 animate-gradient overflow-hidden">
+                 <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                 <span className="relative z-10">{t.apply.cta}</span>
+                 <ArrowRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform" />
               </a>
-              <div className="mt-8 flex items-center justify-center gap-2 text-slate-400">
-                <Mail className="h-4 w-4 text-emerald-400" />
-                <span className="text-sm">{t.apply.contact}</span>
+              <div className="mt-12 flex items-center justify-center gap-3 text-slate-400 group">
+                <div className="h-10 w-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-emerald-500/50 transition-colors">
+                  <Mail className="h-5 w-5 text-emerald-400" />
+                </div>
+                <span className="text-lg font-medium tracking-wide group-hover:text-emerald-300 transition-colors">{t.apply.contact}</span>
               </div>
             </motion.div>
           </div>
