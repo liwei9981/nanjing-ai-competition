@@ -20,7 +20,7 @@ export default function App() {
     { key: 'home', label: t.nav.home, href: '#home' },
     { key: 'nanjing', label: t.nav.nanjing, href: '#nanjing' },
     { key: 'guide', label: t.nav.guide, href: '#guide' },
-    { key: 'apply', label: t.nav.apply, href: '#apply' },
+    { key: 'apply', label: t.nav.apply, href: 'https://forms.office.com/r/1bv512DYdJ' },
   ];
 
   const trackIcons = [Brain, Cpu, CircuitBoard];
@@ -41,6 +41,7 @@ export default function App() {
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map(item => (
               <a key={item.key} href={item.href} onClick={() => setActiveSection(item.key)}
+                {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeSection === item.key ? 'bg-white/10 text-emerald-400' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}>
                 {item.label}
               </a>
@@ -51,7 +52,7 @@ export default function App() {
               <Globe className="h-4 w-4 text-emerald-400" />
               {lang === 'EN' ? '中文' : 'EN'}
             </button>
-            <a href="#apply" className="hidden md:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-6 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 animate-gradient">
+            <a href="https://forms.office.com/r/1bv512DYdJ" target="_blank" rel="noopener noreferrer" className="hidden md:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-6 py-2.5 text-sm font-bold text-white shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 animate-gradient">
               {t.nav.apply} <ArrowRight className="h-4 w-4" />
             </a>
             <button onClick={() => setMobileMenu(!mobileMenu)} className="lg:hidden p-2 text-slate-400 hover:text-white transition-colors">
@@ -63,6 +64,7 @@ export default function App() {
           <div className="lg:hidden bg-[#060e1f]/95 backdrop-blur-xl border-b border-white/5 px-6 py-4 space-y-2">
             {navItems.map(item => (
               <a key={item.key} href={item.href} onClick={() => { setActiveSection(item.key); setMobileMenu(false); }}
+                {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="block px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-all">
                 {item.label}
               </a>
@@ -101,7 +103,7 @@ export default function App() {
                 {t.hero.desc}
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <a href="#apply" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all animate-gradient">
+                <a href="https://forms.office.com/r/1bv512DYdJ" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all animate-gradient">
                   {t.hero.cta1} <ArrowRight className="h-4 w-4" />
                 </a>
                 <a href="#nanjing" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 py-3.5 text-base font-medium text-white hover:bg-white/10 transition-all backdrop-blur-sm">
@@ -336,7 +338,7 @@ export default function App() {
               <p className="text-xl sm:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
                 {t.apply.desc}
               </p>
-              <a href="mailto:contact@transfong.com" className="group relative inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-12 py-5 text-xl font-black text-white shadow-[0_0_50px_rgba(16,185,129,0.3)] hover:shadow-[0_0_80px_rgba(16,185,129,0.5)] hover:scale-105 active:scale-95 transition-all duration-500 animate-gradient overflow-hidden">
+              <a href="https://forms.office.com/r/1bv512DYdJ" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-12 py-5 text-xl font-black text-white shadow-[0_0_50px_rgba(16,185,129,0.3)] hover:shadow-[0_0_80px_rgba(16,185,129,0.5)] hover:scale-105 active:scale-95 transition-all duration-500 animate-gradient overflow-hidden">
                  <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                  <span className="relative z-10">{t.apply.cta}</span>
                  <ArrowRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform" />
